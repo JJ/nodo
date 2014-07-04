@@ -4,6 +4,7 @@
 //index.js
 var servidor = require('./servidor'); //Importamos el módulo servidor creado
 var router = require('./router'); //Importamos el módulo router
+var fs = require('fs');
 var manejadores = require('./manejador'); //Importamos el módulo manejador
 var manejador = {};
 
