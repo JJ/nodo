@@ -21,25 +21,25 @@ function contador_1 (resp) {
     console.log("Funcion 1 ejecutada.");
 
     fs.readFile("contador_1.txt", function(err, data){
-    if (err) throw err;
-    //cuenta_1 = parseInt(data);
-    console.log(data);
-    }) ;
+    	if (err) throw err;
+    	var cuenta_1 = parseInt(data);
+    	console.log(data);
+  
+    	resp.writeHead(200, {"Content-Type": "text/html"});
+    	resp.write("Pagina cargada...." + String(cuenta_1) + " veces" + " <br>");
+    	resp.write("<a href='/'> home </a> <br>");
+    	cuenta_1 = cuenta_1 + 1; 
+    	console.log("test 1");
+    	fs.writeFile("contador_1.txt", cuenta_1, function(err) {
+    		if(err) {
+        		console.log(err);
+    		} else {
+        		console.log("The file was saved!");
+    		}
+	}); 
 
-    resp.writeHead(200, {"Content-Type": "text/html"});
-    resp.write("Pagina cargada...." + String(cuenta_1) + " veces" + " <br>");
-    resp.write("<a href='/'> home </a> <br>");
-    cuenta_1 = cuenta_1 + 1; 
-    console.log("test 1");
-    fs.writeFile("contador_1.txt", cuenta_1, function(err) {
-    if(err) {
-        console.log(err);
-    } else {
-        console.log("The file was saved!");
-    }
-}); 
-
-    resp.end();
+    	resp.end();
+    });
 };
 
 function contador_2 (resp) {
